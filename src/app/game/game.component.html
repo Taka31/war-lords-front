@@ -1,38 +1,53 @@
 <div class="block-card-to-choose">
-    <div *ngFor="let card of cards" class="card-unitary" (click)="addCardToMyGame(card.id)" >
-        <div class="card-name" >
-            {{card.name}}
-        </div>
-        <div class="card-skill" >
-            <div class="card-image"></div>
-            <div style="margin:13px;">{{card.skills}}</div>           
-        </div>
-        <div class="card-point">
+    <div *ngFor="let card of tavernCards" class="card-unitary" (click)="addCardToMyGame(card.id)" >
+        
+        <div [ngClass]="helper.isShield(card)?'shield':'no-shield'">
+            <div [ngClass]="helper.isProvocation(card)?'provocation':'no-provocation'">
+                <div [ngClass]="helper.isReincarnation(card)?'reincarnation':'no-reincarnation'">
+                    <div class="card-name" >
+                        {{card.name}}
+                    </div>
+                    <div class="card-skill" >
+                        <div class="card-image"></div>
+                        <div style="margin:13px;">{{card.skills}}</div>           
+                    </div>
+                    <div class="card-point">
 
-            <div class="card-atk">  {{card.atk}} </div>
-            <div class="card-pv">   {{card.pv}}   </div>
-        </div>
+                        <div class="card-atk">  {{card.atk}} </div>
+                        <div class="card-pv">   {{card.pv}}   </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
     </div>
 </div>
 
 
 <div div class="block-card-choosen">
-    <div *ngFor="let card of myCards" class="card-unitary" >
-        <div class="card-name" >
-            {{card.name}}
-        </div>
-        <div class="card-skill" >
-            <div class="card-image"></div>
-            <div style="margin:13px;">{{card.skills}}</div>           
-        </div>
-        <div class="card-point">
+    <div *ngFor="let card of myCards; index as i" class="card-unitary" (click)="selectServant(i)">
+        <div [ngClass]="card.isSelected()?'card-selected':'card-not-selected'">
+            <div [ngClass]="helper.isShield(card.servant)?'shield':'no-shield'">
+                <div [ngClass]="helper.isProvocation(card.servant)?'provocation':'no-provocation'">
+                    <div [ngClass]="helper.isReincarnation(card.servant)?'reincarnation':'no-reincarnation'">
+                        <div class="card-name" >
+                            {{card.servant.name}}
+                        </div>
+                        <div class="card-skill" >
+                            <div class="card-image"></div>
+                            <div style="margin:13px;">{{card.servant.skills}}</div>           
+                        </div>
+                        <div class="card-point">
 
-            <div class="card-atk">  {{card.atk}} </div>
-            <div class="card-pv">   {{card.pv}}   </div>
+                            <div class="card-atk">  {{card.servant.atk}} </div>
+                            <div class="card-pv">   {{card.servant.pv}}   </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
         </div>
     </div>
 </div>
 
 <div class="coins-indicador">
-    My Coin(s) : {{this.gameRules!.getCoins()}} - <button (click)="refresh()"> Refresh</button>
+    My Coin(s) : {{this.gameManager!.getCoins()}} - <button (click)="refresh()"> Refresh</button>
 </div>

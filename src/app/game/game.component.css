@@ -6,8 +6,41 @@
     width:95%; border:solid 0px black; float:left; margin-top:50px;
 }
 
+.block-card-choosen .card-selected{
+    border:solid 3px red;
+}
+    
+.block-card-choosen .card-not-selected{
+    border:solid 3px transparent;
+}
+
 .card-unitary{
-    border:solid 2px black; width:180px; height:230px; float:left; margin:20px;
+    border:solid 2px black; width:180px; height:230px; float:left; margin:30px;
+}
+
+.card-unitary .shield{
+    border:solid 4px yellow;
+    border-radius: 50%;
+}
+
+.card-unitary .no-shield{
+    border:transparent 4px solid;
+}
+
+.card-unitary .provocation{
+    border:solid 6px grey;
+}
+
+.card-unitary .no-provocation{
+    border:dotted 6px transparent;
+}
+
+.card-unitary .reincarnation{
+    border:dotted 3px rgb(65, 226, 218);
+}
+
+.card-unitary .no-reincarnation{
+    border:transparent 3px solid;
 }
 
 .card-unitary .card-name{
@@ -15,7 +48,7 @@
 }
 
 .card-unitary .card-skill{
-    border: 1px solid rgb(237, 53, 12); height:160px;
+    border: 1px solid black; height:160px;
 }
 
 .card-unitary .card-skill .card-image{
@@ -29,7 +62,7 @@
 .card-unitary .card-point .card-atk{
     float:left; border:1px solid black; 
             width:50px; height:40px; border-radius: 50%; padding-top:5px; 
-            position:relative; right:10px; bottom:10px; background-color: rgb(187, 9, 9); text-align:center;
+            position:relative; right:40px; bottom:10px; background-color: rgb(187, 9, 9); text-align:center;
 }
 
 .card-unitary .card-point .card-pv{

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { CardManagerService } from '../service/card-manager.service';
 import { Servant } from '../data/servant';
-import { GameRules } from '../data/game-rules';
+import { GameManager } from '../data/game-manager';
+import { ServantHelper } from '../data/servant-helper';
+import { ServantInGame } from '../data/servant-in-game';
 
 @Component({
   selector: 'app-game',
@@ -10,27 +12,30 @@ import { GameRules } from '../data/game-rules';
 })
 export class GameComponent {
 
-  cards : Servant[]= []
-  myCards : Servant[] = []
+  tavernCards : Servant[]= []
+  myCards : ServantInGame[] = []
+  helper!:ServantHelper;
 
-  gameRules? : GameRules;
+  servantSelected! : Servant;
+
+  gameManager? : GameManager;
 
   constructor(private service : CardManagerService){
-
+    this.gameManager=new GameManager(10,3,6,1,this.service);
   }
 
-  ngOnInit() : void{
-    this.gameRules=new GameRules(10,3,6,1);
+  ngOnInit() : void{    
+    this.helper=new ServantHelper();
     this.refreshServants();
   }
   
 
-  addCardToMyGame(id:number):void{
-    this.gameRules?.servantUpdateCoins().subscribe(bool=>{
+  addCardToMyGame(id?:number):void{
+    this.gameManager?.servantUpdateCoins().subscribe(bool=>{
       if(bool){
-        let card :any = this.cards.find(value=>value.id===id);
-        this.myCards.push(card);
-        this.cards.splice(this.cards.findIndex(value=>value.id===id),1);
+        let card :any = this.tavernCards.find(value=>value.id===id);
+        this.myCards.push(new ServantInGame(card));
+        this.tavernCards.splice(this.tavernCards.findIndex(value=>value.id===id),1);
       }else{
         alert("Not enought Coins.")
       }
@@ -38,21 +43,20 @@ export class GameComponent {
   }
 
   refresh() :void{
-    this.gameRules?.refreshServants().subscribe(bool=>{
+    this.gameManager?.refreshServants().subscribe(bool=>{
       if(bool){
-        this.service.getCards().subscribe(cards=>this.cards=this.gameRules!.getDockOfRandomCard(cards));
+        this.gameManager?.getDockOfRandomCard().subscribe(servants=>this.tavernCards=servants);
       }else{
         alert("Not enought Coins.")
       }
-    });
+    });    
   }
 
   refreshServants():void{
-    this.service.getCards().subscribe(cards=>this.cards=this.gameRules!.getDockOfRandomCard(cards));
+    this.gameManager?.getDockOfRandomCard().subscribe(servants=>this.tavernCards=servants);
   }
 
-
-
-
-
+  selectServant(index : number):void{
+    this.gameManager!.manageSelectCard(index, this.myCards);
+  }
 }
