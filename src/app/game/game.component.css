@@ -1,76 +1,95 @@
+html{
+    text-align:center;
+}
+
+.main{
+    background-color: rgba(150, 150, 150, 0.817);
+    width:90%;
+    border:solid 1px black;
+    height:800px;
+    display: inline-block;
+    margin-left: 5%;
+}
+
+hr{
+    color:black;
+}
+
+
 .block-card-to-choose{
-    width:95%; border:solid 0px black; float:left;
+    width:100%; border:solid 0px black; margin:0 auto; text-align:center; height: 250px;
 }
 
 .block-card-choosen{
-    width:95%; border:solid 0px black; float:left; margin-top:50px;
+    width:100%; border:solid 0px black; margin:0 auto; text-align:center;height: 250px;
 }
 
 .block-card-choosen .card-selected{
-    border:solid 3px red;
+    border:dashed 1px red;
+    height:178px;
 }
-    
+
 .block-card-choosen .card-not-selected{
-    border:solid 3px transparent;
+    border:solid 1px transparent;
 }
 
 .card-unitary{
-    border:solid 2px black; width:180px; height:230px; float:left; margin:30px;
+    border:solid 2px black; width:120px; height:180px; margin:30px; font-size:12px;display:inline-block;
 }
 
 .card-unitary .shield{
-    border:solid 4px yellow;
+    border:solid 2px yellow;
     border-radius: 50%;
 }
 
 .card-unitary .no-shield{
-    border:transparent 4px solid;
+    border:transparent 2px solid;
 }
 
 .card-unitary .provocation{
-    border:solid 6px grey;
+    border:solid 2px grey;
 }
 
 .card-unitary .no-provocation{
-    border:dotted 6px transparent;
+    border:dotted 2px transparent;
 }
 
 .card-unitary .reincarnation{
-    border:dotted 3px rgb(65, 226, 218);
+    border:dotted 2px rgb(65, 226, 218);
 }
 
 .card-unitary .no-reincarnation{
-    border:transparent 3px solid;
+    border:transparent 2px solid;
 }
 
 .card-unitary .card-name{
-    border-bottom:2px solid black; height:30px; margin:0 auto; text-align:center;padding-top:10px; font-weight: bold;
+    border-bottom:2px solid black; height:15px; margin:0 auto; text-align:center;padding-top:5px; font-weight: bold;
 }
 
 .card-unitary .card-skill{
-    border: 1px solid black; height:160px;
+    border: 1px solid black; height:130px;
 }
 
 .card-unitary .card-skill .card-image{
-    border:Solid 1px black; margin:13px; height:70px;
+    border:Solid 1px black; margin:13px; height:50px;
 }
 
 .card-unitary .card-point{
-    border-top:2px solid black; font-size: 30px;
+    border-top:2px solid black; font-size: 20px;
 }
 
 .card-unitary .card-point .card-atk{
-    float:left; border:1px solid black; 
-            width:50px; height:40px; border-radius: 50%; padding-top:5px; 
-            position:relative; right:40px; bottom:10px; background-color: rgb(187, 9, 9); text-align:center;
+    border:1px solid black; 
+            width:25px; height:25px; border-radius: 50%; padding-top:5px; 
+            position:relative; right:15px; bottom:10px; background-color: rgb(187, 9, 9); text-align:center;
 }
 
 .card-unitary .card-point .card-pv{
-    float:left; border:1px solid black; 
-            width:50px; height:40px; border-radius: 50%; padding-top:5px; 
-            position:relative; left:90px; bottom:10px; background-color: green; text-align:center;
+    border:1px solid black; 
+            width:25px; height:25px; border-radius: 50%; padding-top:5px; 
+            position:relative; left:105px; bottom:40px; background-color: green; text-align:center;
 }
 
 .coins-indicador{
-    border:dashed 1px black; position:absolute; top:650px; width:100%; text-align:center; font-size:30px;
+    border:dashed 1px black; width:100%; text-align:center; font-size:30px;
 }

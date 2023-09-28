@@ -15,6 +15,7 @@ export class GameComponent {
   tavernCards : Servant[]= []
   myCards : ServantInGame[] = []
   helper!:ServantHelper;
+  logs:string='';
 
   servantSelected! : Servant;
 
@@ -36,8 +37,9 @@ export class GameComponent {
         let card :any = this.tavernCards.find(value=>value.id===id);
         this.myCards.push(new ServantInGame(card));
         this.tavernCards.splice(this.tavernCards.findIndex(value=>value.id===id),1);
+        this.logs+=`Servant choosen : ${card.name}\n`;
       }else{
-        alert("Not enought Coins.")
+        this.logs+='Not enought Coins.\n';
       }
     });    
   }
@@ -46,14 +48,16 @@ export class GameComponent {
     this.gameManager?.refreshServants().subscribe(bool=>{
       if(bool){
         this.gameManager?.getDockOfRandomCard().subscribe(servants=>this.tavernCards=servants);
+        this.logs+='Refresh Servants\n';
       }else{
-        alert("Not enought Coins.")
+        this.logs+='Not enought Coins.\n';
       }
     });    
   }
 
   refreshServants():void{
     this.gameManager?.getDockOfRandomCard().subscribe(servants=>this.tavernCards=servants);
+    this.logs+='Refresh Servants\n';
   }
 
   selectServant(index : number):void{
